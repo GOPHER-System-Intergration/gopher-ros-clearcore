@@ -41,7 +41,11 @@ class GopherSerial:
     
         
         if len(data) > 0:
-            self.service_unity_print(1,data)
+            try:
+                self.service_unity_print(1,data)
+            except:
+                rospy.logged_info("Unity Node inactive")
+
             self.logger_pub.publish(data)
 
 
